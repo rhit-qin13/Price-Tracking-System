@@ -55,11 +55,11 @@ function searchProduct() {
 function generateReport(event) {
     event.preventDefault();
     const product = document.getElementById("product").value;
-    const startDate = document.getElementById("start-date").value;
-    const endDate = document.getElementById("end-date").value;
+    // const startDate = document.getElementById("start-date").value;
+    const date = document.getElementById("priceDate").value;
 
-    if (product && startDate && endDate) {
-        alert(`Generating report for ${product} from ${startDate} to ${endDate}`);
+    if (product && date) {
+        alert(`Generating report for ${product} on ${date}`);
     } else {
         alert("Please fill out all fields.");
     }
