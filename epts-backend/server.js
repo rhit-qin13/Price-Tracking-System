@@ -10,8 +10,7 @@ app.use(express.json());
 // Database configuration
 const dbConfig = {
     user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,npm install express mssql dotenv
-
+    password: process.env.DB_PASSWORD,
     server: process.env.DB_SERVER,
     database: process.env.DB_DATABASE,
     port: parseInt(process.env.DB_PORT) || 1433,
@@ -31,15 +30,17 @@ async function connectDB() {
     }
 }
 
+// Define a route to test database connectivity
 app.get('/api/products', async (req, res) => {
     try {
-        const result = await sql.query('SELECT * FROM Products');
-        res.json(result.recordset); // Send the query result to the client
+        const result = await sql.query('SELECT * FROM Product'); 
+        res.json(result.recordset); 
     } catch (err) {
         res.status(500).send('Database query error: ' + err);
     }
 });
 
+// Start the server
 const PORT = 5000;
 app.listen(PORT, async () => {
     await connectDB();
